@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import TablaUsers from './Components.jsx/TablaUsers';
-import "@material-tailwind/react/tailwind.css";
+import ExportPDFButton from './Components.jsx/pdf';
 
-function App() {
+
+
+const App = () => {
+  const [user, setUsers] = useState([]);
   return (
-    <div className="App">
+    <div className="p-6">
       <h1>Tabla Estudiantes</h1>
-      <TablaUsers/>
+      <ExportPDFButton users={users}/>
+      <TablaUsers onDataReady={setUsers}/>
     </div>
   );
 }
