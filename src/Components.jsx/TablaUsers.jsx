@@ -14,7 +14,7 @@ const TablaUsers = ({onDataReady = () => {}}) => {
         );
         const data = await response.json();
         setUsers(data.users);
-        setTotal(data.total); // Total de usuarios que hay en el backend
+        setTotal(data.total); 
         onDataReady(data.users);
       } catch (error) {
         console.error('Error al obtener los datos:', error);

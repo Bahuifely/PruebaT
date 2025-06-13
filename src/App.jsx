@@ -10,8 +10,6 @@ const App = () => {
       <h1>Tabla Estudiantes</h1>
       <ExportPDFButton users={users}/>
       <TablaUsers onDataReady={setUsers}/>
-     
-      
     </div>
   );
 }
