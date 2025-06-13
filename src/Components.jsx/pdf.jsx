@@ -1,13 +1,12 @@
-import React from 'react';
 import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
 
 const ExportPDFButton = ({ users }) => {
   const exportToPDF = () => {
     const doc = new jsPDF();
-    doc.text('Lista de Usuarios', 14, 15);
+    doc.text('Lista de Usuarios', 14, 10);
     
-    doc.autoTable({
+    autoTable({
       startY: 20,
       head: [['ID', 'Nombre', 'Apellido', 'Edad', 'Género', 'Email']],
       body: users.map(user => [
