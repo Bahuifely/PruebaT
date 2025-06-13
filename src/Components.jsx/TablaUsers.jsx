@@ -28,7 +28,7 @@ const TablaUsers = ({onDataReady = () => {}}) => {
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr key={user.id} className="hover:bg-gray-50">
+              <tr key={users.id} className="hover:bg-gray-50">
                 <td className="border border-gray-300 px-4 py-2">{user.id}</td>
                 <td className="border border-gray-300 px-4 py-2">{user.firstName}</td>
                 <td className="border border-gray-300 px-4 py-2">{user.maidenName}</td>

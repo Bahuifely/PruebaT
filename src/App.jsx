@@ -7,9 +7,9 @@ const App = () => {
   return (
     <div className="p-6">
       <h1>Tabla Estudiantes</h1>
-
-      <TablaUsers onDataReady={setUsers}/>
       <ExportPDFButton users={users}/>
+      <TablaUsers onDataReady={setUsers}/>
+      
       
     </div>
   );
