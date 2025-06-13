@@ -2,16 +2,29 @@ import React, { useEffect, useState } from 'react';
 
 const TablaUsers = ({onDataReady = () => {}}) => {
   const [users, setUsers] = useState([]);
+  const [page, setPage] = useState (1);
+  const [limit] = useState (10);
+  const [total, setTotal] = useState (0);
 
   useEffect(() => {
-    fetch('https://dummyjson.com/users')
-      .then(response => response.json())
-      .then(data => {
-      setUsers(data.users);
-      onDataReady(data.users);})
-      .catch(error => console.error('Error al obtener los datos:', error));
-  }, [onDataReady]);
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch(
+          `https://dummyjson.com/users?limit=${limit}&skip=${(page - 1) * limit}`
+        );
+        const data = await response.json();
+        setUsers(data.users);
+        setTotal(data.total); // Total de usuarios que hay en el backend
+        onDataReady(data.users);
+      } catch (error) {
+        console.error('Error al obtener los datos:', error);
+      }
+    };
+  fetchUsers();
+  }, [page, limit, onDataReady]);
 
+
+  const totalPages = Math.ceil(total / limit);
   return (
     <div className="p-6">
       <div className="overflow-x-auto">
@@ -39,6 +52,8 @@ const TablaUsers = ({onDataReady = () => {}}) => {
             ))}
           </tbody>
         </table>
+        <button onClick={() => setPage((prev) => Math.max(prev - 1, 1))}>Anterior</button>
+        <button onClick={() => setPage((prev) => prev + 1)}>Siguiente</button>
       </div>
     </div>
   );

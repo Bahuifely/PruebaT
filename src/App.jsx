@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import TablaUsers from './Components.jsx/TablaUsers';
 import ExportPDFButton from './Components.jsx/pdf';
+
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -9,7 +10,7 @@ const App = () => {
       <h1>Tabla Estudiantes</h1>
       <ExportPDFButton users={users}/>
       <TablaUsers onDataReady={setUsers}/>
-      
+     
       
     </div>
   );
