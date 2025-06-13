@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const TablaUsers = ({onDataReady = () => {}}) => {
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState (1);
-  const [limit] = useState (10);
+  const [limit] = useState (15);
   const [total, setTotal] = useState (0);
 
   useEffect(() => {
